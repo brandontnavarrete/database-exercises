@@ -22,6 +22,7 @@ Select first_name, last_name
 		
 		
 #4 Find all employees with first names 'Irena', 'Vidya', or 'Maya', and order your results returned by last name and then first name
+
 #Irena acton
 #Zyda maya
 Select  last_name,first_name
@@ -30,12 +31,12 @@ Select  last_name,first_name
 				order by last_name, first_name;
 
 #5 Write a query to to find all employees whose last name starts and ends with 'E'
-#7330 returned
+#899 returned
 #Ramzi	Erde	10021
-#Dharmaraja	Ertl	499968
+#Tadahiro	Erde	499648
 Select first_name,last_name,emp_no
 		from employees 
-			where last_name Like 'E%'
+			where last_name Like 'E%E'
 				order by emp_no;
 				
 			
