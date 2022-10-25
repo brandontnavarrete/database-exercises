@@ -10,7 +10,7 @@ Select first_name
 #3. 241
 Select first_name 
 	from employees 
-		where first_name = 'Irena' or 'Vidya' or 'Maya';
+		where first_name = 'Irena' or first_name = 'Vidya' or first_name = 'Maya';
 		
 #4 441
 Select first_name, gender
