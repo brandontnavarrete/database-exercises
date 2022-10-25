@@ -5,12 +5,14 @@ Select * from employees;
 #2. Find all employees with first names 'Irena', 'Vidya', or 'Maya', and order your results returned by first name.
 #irena Rutenauer, in asc order with no limit
 #vidya simmen
+#709
 Select first_name, last_name
 	from employees 
 		where first_name IN ('Irena','Vidya','Maya')
 			order by first_name ;	
 				
 #3. Find all employees with first names 'Irena', 'Vidya', or 'Maya', and order your results returned by first name and then last name. 
+#709
 #Irena acton
 #vidya Sweizig
 Select first_name, last_name
@@ -22,7 +24,7 @@ Select first_name, last_name
 		
 		
 #4 Find all employees with first names 'Irena', 'Vidya', or 'Maya', and order your results returned by last name and then first name
-
+#709
 #Irena acton
 #Zyda maya
 Select  last_name,first_name
