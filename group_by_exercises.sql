@@ -15,15 +15,10 @@ Select last_name from employees
 WHERE last_name LIKE 'e%e'
 GROUP BY last_name;
 #4 Write a query to to find all unique combinations of first and last names of all employees whose last names start and end with 'E'.
-/*
-Eldridge	Eldridge
-Eldridge	Erde
-Ebbe	Etalle
-Elrique	Erbe
-*/
+
 Select first_name,last_name from employees
-				WHERE first_name LIKE 'e%e' 
-					AND last_name LIKE 'e%e'		
+				
+					where last_name LIKE 'e%e'		
 						GROUP BY first_name,last_name;
 #5. Write a query to find the unique last names with a 'q' but not 'qu'. Include those names in a comment in your sql code.
 #3
@@ -66,15 +61,26 @@ select first_name, gender,count(first_name) as shared_name from employees
  
 #no unique filter rows = 300024
 #distinct rows = 300018
-select LOWER(CONCAT(SUBSTRING(first_name,1,1),SUBSTRING(last_name,1,4),'_',SUBSTRING(birth_date,6,2),SUBSTRING(birth_date,3,2)))AS 
+select LOWER(CONCAT(SUBSTRING(first_name,1,1),SUBSTRING(last_name,1,4),'_',SUBSTRING(birth_date,6,2),SUBSTRING(birth_date,3,2)))AS
 username,
 	first_name,
 		last_name,
 			birth_date,
-				count(*)as share_acct_name
+				count(*)as share_acct
 				FROM employees
-						group by username,first_name,last_name,birth_date;
+						group by username,first_name,last_name,birth_date
+							order by share_acct desc;
+*/
+select LOWER(CONCAT(SUBSTRING(first_name,1,1),SUBSTRING(last_name,1,4),'_',SUBSTRING(birth_date,6,2),SUBSTRING(birth_date,3,2)))AS
+	username,
+		count(*)as share_acct
+			FROM employees
+					group by username
+							order by share_acct desc;
 						
+					
+
+*/
 					
 
 
