@@ -49,6 +49,8 @@ i should have used when left(last_name, 1) <= 'h' then 'a-h'
 #3 -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- --
 drop temporary table if exists noether_2033.no_repeats;
 
+
+
 create temporary table noether_2033.no_repeats as (
 
 Select distinct emp_no, birth_date, first_name, last_name, gender,hire_date 
@@ -80,9 +82,18 @@ on employees.emp_no = noether_2033.no_repeats.emp_no
 
  
  ;
+/*
+select count(x),
+when birth_date >= '1960-01-01; then '60s'
+when birht_date >= '1950-01-01; then '50s'
+end as 'birth_decade'
+from employees
+group by birth_decade;
 
+*/
 
 -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- --
+
 select * from dept_emp limit 5;
 select * from departments limit 5;
 select * from salaries  limit 5;
@@ -151,7 +162,7 @@ SELECT
        end) as 'Prod & QM',
         
    AVG(CASE
-   		WHEN dept_name IN ('Finance', 'Human R') 
+   		WHEN dept_name IN ('Finance', 'Human Resources') 
 		and salaries.to_date > curdate()
 			THEN salary
        end) as 'Finance & HR',
@@ -173,4 +184,22 @@ group by 'R&D', 'Sales & Marketing', 'Prod & QM', 'Finance & HR', 'Customer Serv
 
 limit 10
 ;
+
+/*
+select 
+case
+	WHEN dept_name IN ('research', 'development') 
+ 	WHEN dept_name IN ('sales', 'marketing')
+ 	WHEN dept_name IN ('Production', 'Quality Management') 
+ 	WHEN dept_name IN ('Finance', 'Human R')
+ 	WHEN dept_name = 'Customer Service' 
+ end as new_dept', avg(salary) as mean_salary
+ from departments
+ join dept_emp as de
+ using (dept_no)
+ join salaries as s
+ using (emp_no)
+ where de.to_date > now()
+ and s.to_date > now ()
+*/
 -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- --
