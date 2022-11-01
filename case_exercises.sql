@@ -1,4 +1,3 @@
-
 #1 -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- --
 select
 -- what we are looking for	
@@ -45,8 +44,13 @@ limit 100;
  
  
 #3 -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- --
+drop temporary table if exists noether_2033.no_repeats;
 
-select * from dept_emp limit 5;
+create temporary table noether_2033.no_repeats as (
+
+Select distinct emp_no, birth_date, first_name, last_name, gender,hire_date 
+from employees);
+
 
 -- i checked max and min birth_dates so that i can manage the least amount of cases
 
@@ -57,23 +61,22 @@ select
 
 
 -- looking for birth_date in the 1960s
-count(case when birth_date like '%196%' then birth_date
+count(case when employees.birth_date like '%196%' then employees.birth_date
 else null
 end)as 'the 60s',
 
 -- looking for birht_date in the 1950s
-count(case when birth_date like '%195%' then birth_date
+count(case when employees.birth_date like '%195%' then employees.birth_date
 else null
 end ) as 'the 50s'
 
 
 from employees
-join dept_emp
-on employees.emp_no = dept_emp.emp_no
-where to_date > curdate()
+join noether_2033.no_repeats
+on employees.emp_no = noether_2033.no_repeats.emp_no
+
  
  ;
-
 
 
 -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- --
