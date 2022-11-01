@@ -41,6 +41,9 @@ from employees
 
 limit 100;
 
+/*
+i should have used when left(last_name, 1) <= 'h' then 'a-h'
+*/
  
  
 #3 -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- --
